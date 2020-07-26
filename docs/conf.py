@@ -18,8 +18,8 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'PinSout'
-copyright = '2020, Wijae Cho'
-author = 'Wijae Cho'
+copyright = '2020, Wijae cho'
+author = 'Wijae cho'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'

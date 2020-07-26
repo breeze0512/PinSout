@@ -1,5 +1,5 @@
 .. PinSout documentation master file, created by
-   sphinx-quickstart on Sun Jul 26 23:08:48 2020.
+   sphinx-quickstart on Sun Jul 26 23:18:40 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
