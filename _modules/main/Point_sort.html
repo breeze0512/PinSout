@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>main.Point_sort &mdash; PinSout 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> PinSout
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../main.html">main package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PinSout</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>main.Point_sort</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for main.Point_sort</h1><div class="highlight"><pre>
+<span></span><span class="c1"># from functools import reduce</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># import numpy as np</span>
+
+<span class="c1"># center_point = []</span>
+<span class="c1"># normal_vector = []</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Point_sort.py</span>
+<span class="sd">====================================</span>
+<span class="sd">The core module of my example project</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Point_sort"><a class="viewcode-back" href="../../main.Point_sort.html#main.Point_sort.Point_sort">[docs]</a><span class="k">class</span> <span class="nc">Point_sort</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_point</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normal_vector</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="viewcode-block" id="Point_sort.SortPointsClockwise"><a class="viewcode-back" href="../../main.Point_sort.html#main.Point_sort.Point_sort.SortPointsClockwise">[docs]</a>    <span class="k">def</span> <span class="nf">SortPointsClockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_list</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorting the pointList to ClockWise</span>
+<span class="sd">            Align the points counterclockwise using the center points of the points on one face</span>
+<span class="sd">        :param list point_list: list of points included in certain face</span>
+<span class="sd">        :param int 1 or -1: direction of sorted point list (1 = clockwise, 2 = counterclockwise)</span>
+
+<span class="sd">        :returns list new_point_list: sorted point list(Same first and end coordinates)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="n">direction</span> <span class="k">else</span> <span class="o">-</span><span class="mf">1.0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_point</span> <span class="o">=</span> <span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">point_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">point_list</span><span class="p">))</span>
+        <span class="c1"># center_point = [center_point_0[0] / float(len(point_list)), center_point_0[1] / float(len(point_list)), center_point_0[2] / float(len(point_list))]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">normal_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_point</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_point</span><span class="p">))</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+        <span class="n">new_point_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">point_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmp_to_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetIsLess</span><span class="p">))</span>
+
+        <span class="n">new_point_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_point_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_point</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normal_vector</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">new_point_list</span></div>
+
+<div class="viewcode-block" id="Point_sort.SortPointsClockwise2"><a class="viewcode-back" href="../../main.Point_sort.html#main.Point_sort.Point_sort.SortPointsClockwise2">[docs]</a>    <span class="k">def</span> <span class="nf">SortPointsClockwise2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_list</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorting the pointList to ClockWise</span>
+<span class="sd">            Align the points counterclockwise using the center points of the points on one face</span>
+<span class="sd">        :param list point_list: list of points included in certain face</span>
+<span class="sd">        :param int 1 or -1: direction of sorted point list (1 = clockwise, 2 = counterclockwise)</span>
+<span class="sd">        :returns list new_point_list: sorted point list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="n">direction</span> <span class="k">else</span> <span class="o">-</span><span class="mf">1.0</span>
+        <span class="c1"># center_x = 0</span>
+        <span class="c1"># center_y = 0</span>
+        <span class="c1"># for i in point_list:</span>
+        <span class="c1">#     center_x = center_x + i[0]</span>
+        <span class="c1">#     center_y = center_y + i[1]</span>
+        <span class="c1"># self.center_point = np.asarray([center_x, center_y])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_point</span> <span class="o">=</span> <span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">point_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">point_list</span><span class="p">))</span>
+        <span class="c1"># center_point = [center_point_0[0] / float(len(point_list)), center_point_0[1] / float(len(point_list)), center_point_0[2] / float(len(point_list))]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">normal_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_point</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_point</span><span class="p">))</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+        <span class="n">new_point_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">point_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmp_to_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetIsLess</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_point</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normal_vector</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">new_point_list</span></div>
+
+<div class="viewcode-block" id="Point_sort.GetIsLess"><a class="viewcode-back" href="../../main.Point_sort.html#main.Point_sort.Point_sort.GetIsLess">[docs]</a>    <span class="k">def</span> <span class="nf">GetIsLess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checking the relation between two points</span>
+<span class="sd">           Find the relationship between two points using the angle of the center point and the two points (whether in front or behind)</span>
+<span class="sd">        :param list x: current point</span>
+<span class="sd">        :param list y: next point</span>
+<span class="sd">        :returns: int 0, 1 or -1: result == 0, &lt; 0, &gt; 0 </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normal_vector</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_point</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_point</span><span class="p">)))</span>
+        <span class="c1">#result = np.dot(self.normal_vector, np.cross(np.array(x) - np.array( self.center_point), np.array(y) - np.array(self.center_point)))</span>
+
+
+        <span class="k">if</span> <span class="n">result</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="Point_sort.cmp_to_key"><a class="viewcode-back" href="../../main.Point_sort.html#main.Point_sort.Point_sort.cmp_to_key">[docs]</a>    <span class="k">def</span> <span class="nf">cmp_to_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mycmp</span><span class="p">):</span>
+        <span class="s1">&#39;Convert a cmp= function into a key= function&#39;</span>
+
+        <span class="k">class</span> <span class="nc">K</span><span class="p">:</span>
+            <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
+
+            <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">mycmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+
+            <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">mycmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+            <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">mycmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+            <span class="c1"># def __le__(self, other):</span>
+            <span class="c1">#     return mycmp(self.obj, other.obj) &lt;= 0</span>
+            <span class="c1">#</span>
+            <span class="c1"># def __ge__(self, other):</span>
+            <span class="c1">#     return mycmp(self.obj, other.obj) &gt;= 0</span>
+            <span class="c1">#</span>
+            <span class="c1"># def __ne__(self, other):</span>
+            <span class="c1">#     return mycmp(self.obj, other.obj) != 0</span>
+
+        <span class="k">return</span> <span class="n">K</span></div>
+
+
+<div class="viewcode-block" id="Point_sort.visual_graph"><a class="viewcode-back" href="../../main.Point_sort.html#main.Point_sort.Point_sort.visual_graph">[docs]</a>    <span class="k">def</span> <span class="nf">visual_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_list</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">point_list</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;stars&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+                    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+
+
+<span class="c1"># from functools import reduce</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># import numpy as np</span>
+<span class="c1"># import math</span>
+<span class="c1"># # center_point = []</span>
+<span class="c1"># # normal_vector = []</span>
+<span class="c1"># class Point_sort:</span>
+<span class="c1">#     def __init__(self):</span>
+<span class="c1">#         self.center_point = []</span>
+<span class="c1">#         self.normal_vector = []</span>
+<span class="c1">#     def SortPointsClockwise(self, point_list, direction):</span>
+<span class="c1">#</span>
+<span class="c1">#         sign = 1.0 if direction else -1.0</span>
+<span class="c1">#</span>
+<span class="c1">#         self.center_point = (reduce(lambda x, y: np.array(x) + np.array(y), point_list)) / float(len(point_list))</span>
+<span class="c1">#         # center_point = [center_point_0[0] / float(len(point_list)), center_point_0[1] / float(len(point_list)), center_point_0[2] / float(len(point_list))]</span>
+<span class="c1">#</span>
+<span class="c1">#         self.normal_vector = np.cross(np.array(point_list[0]) - np.array(self.center_point), np.array(point_list[1]) - np.array(self.center_point)) * float(sign)</span>
+<span class="c1">#</span>
+<span class="c1">#         new_point_list = sorted(point_list, key=self.cmp_to_key(self.GetIsLess))</span>
+<span class="c1">#</span>
+<span class="c1">#         new_point_list.append(new_point_list[0])</span>
+<span class="c1">#         self.center_point = []</span>
+<span class="c1">#         self.normal_vector = []</span>
+<span class="c1">#         return new_point_list</span>
+<span class="c1">#</span>
+<span class="c1">#     def SortPointsClockwise2(self, point_list, direction):</span>
+<span class="c1">#</span>
+<span class="c1">#         sign = 1.0 if direction else -1.0</span>
+<span class="c1">#</span>
+<span class="c1">#         self.center_point = (reduce(lambda x, y: np.array(x) + np.array(y), point_list)) / float(len(point_list))</span>
+<span class="c1">#         # center_point = [center_point_0[0] / float(len(point_list)), center_point_0[1] / float(len(point_list)), center_point_0[2] / float(len(point_list))]</span>
+<span class="c1">#</span>
+<span class="c1">#         self.normal_vector = np.cross(np.array(point_list[0]) - np.array(self.center_point), np.array(point_list[1]) - np.array(self.center_point)) * float(sign)</span>
+<span class="c1">#</span>
+<span class="c1">#         new_point_list = sorted(point_list, key=self.cmp_to_key(self.GetIsLess))</span>
+<span class="c1">#         # new_point_list = sorted(point_list, key=self.GetIsLess)</span>
+<span class="c1">#         # new_point_list = sorted(point_list, key=self.GetIsLess(x, y))</span>
+<span class="c1">#         self.center_point = []</span>
+<span class="c1">#         self.normal_vector = []</span>
+<span class="c1">#         return new_point_list</span>
+<span class="c1">#</span>
+<span class="c1">#     def GetIsLess(self, x, y):</span>
+<span class="c1">#</span>
+<span class="c1">#         result = np.dot(self.normal_vector, np.cross(np.array(x) - np.array(self.center_point), np.array(y) - np.array(self.center_point)))</span>
+<span class="c1">#         result_1 = np.dot(np.array(x) - np.array(self.center_point), np.array(y) - np.array(self.center_point))</span>
+<span class="c1">#         result_2 = np.linalg.norm(np.array(x) - np.array(self.center_point))</span>
+<span class="c1">#</span>
+<span class="c1">#         result_3 = np.linalg.norm(np.array(y) - np.array(self.center_point))</span>
+<span class="c1">#         result_4 = result_1 / (result_3 * result_2)</span>
+<span class="c1">#         result_6 = math.acos(result_4)</span>
+<span class="c1">#</span>
+<span class="c1">#         result_5 = result * result_6</span>
+<span class="c1">#         a = np.array(x) - np.array(self.center_point)</span>
+<span class="c1">#         c = math.pow(a[0], 2) + math.pow(a[1], 2)</span>
+<span class="c1">#         print result_2, math.sqrt(c)</span>
+<span class="c1">#</span>
+<span class="c1">#         if result &gt; 0:</span>
+<span class="c1">#             return 1</span>
+<span class="c1">#         else:</span>
+<span class="c1">#             return -1</span>
+<span class="c1">#         # print result, result_4, result_</span>
+<span class="c1">#         # result = np.dot(self.normal_vector, np.cross(np.array(y) - np.array(self.center_point), np.array(x) - np.array(self.center_point)))</span>
+<span class="c1">#         # if result &gt; 0:</span>
+<span class="c1">#         #     return -1</span>
+<span class="c1">#         # else:</span>
+<span class="c1">#         #     return 1</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#     def cmp_to_key(self, mycmp):</span>
+<span class="c1">#         &#39;Convert a cmp= function into a key= function&#39;</span>
+<span class="c1">#</span>
+<span class="c1">#         class K:</span>
+<span class="c1">#             def __init__(self, obj, *args):</span>
+<span class="c1">#                 self.obj = obj</span>
+<span class="c1">#</span>
+<span class="c1">#             def __lt__(self, other):</span>
+<span class="c1">#                 print &quot;__lt__&quot;, self.obj, other.obj, mycmp(self.obj, other.obj)</span>
+<span class="c1">#                 return mycmp(self.obj, other.obj) &lt; 0</span>
+<span class="c1">#</span>
+<span class="c1">#             def __gt__(self, other):</span>
+<span class="c1">#                 print &quot;__gt__&quot;, self.obj, other.obj, mycmp(self.obj, other.obj)</span>
+<span class="c1">#                 return mycmp(self.obj, other.obj) &gt; 0</span>
+<span class="c1">#</span>
+<span class="c1">#             def __eq__(self, other):</span>
+<span class="c1">#                 print &quot;__eq__&quot;, self.obj, other.obj, mycmp(self.obj, other.obj)</span>
+<span class="c1">#                 return mycmp(self.obj, other.obj) == 0</span>
+<span class="c1">#             # def __lt__(self, other):</span>
+<span class="c1">#             #     return mycmp(self.obj, other.obj) &lt; 0</span>
+<span class="c1">#             #</span>
+<span class="c1">#             # def __gt__(self, other):</span>
+<span class="c1">#             #     return mycmp(self.obj, other.obj) &gt; 0</span>
+<span class="c1">#             #</span>
+<span class="c1">#             # def __eq__(self, other):</span>
+<span class="c1">#             #     return mycmp(self.obj, other.obj) == 0</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#             # def __le__(self, other):</span>
+<span class="c1">#             #     return mycmp(self.obj, other.obj) &lt;= 0</span>
+<span class="c1">#             #</span>
+<span class="c1">#             # def __ge__(self, other):</span>
+<span class="c1">#             #     return mycmp(self.obj, other.obj) &gt;= 0</span>
+<span class="c1">#             #</span>
+<span class="c1">#             # def __ne__(self, other):</span>
+<span class="c1">#             #     return mycmp(self.obj, other.obj) != 0</span>
+<span class="c1">#</span>
+<span class="c1">#         return K</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#     def visual_graph(self, point_list):</span>
+<span class="c1">#         fig = plt.figure()</span>
+<span class="c1">#         ax = fig.add_subplot(111)</span>
+<span class="c1">#         x = []</span>
+<span class="c1">#         y = []</span>
+<span class="c1">#         for index in point_list:</span>
+<span class="c1">#             x.append(index[1])</span>
+<span class="c1">#             y.append(index[2])</span>
+<span class="c1">#</span>
+<span class="c1">#         plt.plot(x, y)</span>
+<span class="c1">#         zip_point = zip(x, y)</span>
+<span class="c1">#         for xy in range(len(zip_point)):</span>
+<span class="c1">#             ax.annotate(&#39;(%s)&#39; % xy, xy=zip_point[xy], textcoords=&#39;data&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#         plt.legend()</span>
+<span class="c1">#         plt.show()</span>
+<span class="c1">#         # x = []</span>
+<span class="c1">#         # y = []</span>
+<span class="c1">#         # for index in point_list:</span>
+<span class="c1">#         #     x.append(index[1])</span>
+<span class="c1">#         #     y.append(index[2])</span>
+<span class="c1">#         # plt.scatter(x, y, label=&quot;stars&quot;, color=&quot;green&quot;,</span>
+<span class="c1">#         #             marker=&quot;*&quot;, s=50)</span>
+<span class="c1">#         # plt.plot(x, y)</span>
+<span class="c1">#         # plt.legend()</span>
+<span class="c1">#         # plt.show()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># #</span>
+<span class="c1"># # A = [-0.75, -0.25, 0, 0.25, 0.5, 0.75, 1.0]</span>
+<span class="c1"># # B = [0.73, 0.97, 1.0, 0.97, 0.88, 0.73, 0.54]</span>
+<span class="c1"># #</span>
+<span class="c1"># # plt.plot(A,B)</span>
+<span class="c1"># # a = zip(A, B)</span>
+<span class="c1"># # for xy in range(len(a)):</span>
+<span class="c1"># #     print xy</span>
+<span class="c1"># #     ax.annotate(&#39;(%s)&#39; % xy, xy=a[xy], textcoords=&#39;data&#39;)</span>
+<span class="c1"># #</span>
+<span class="c1"># # plt.grid()</span>
+<span class="c1"># # plt.show()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># # https://stackoverflow.com/questions/14370636/sorting-a-list-of-3d-coplanar-points-to-be-clockwise-or-counterclockwise</span>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Wijae Cho
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
