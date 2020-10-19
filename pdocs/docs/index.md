@@ -1,416 +1,239 @@
-# __Getting Start__
-- This document describes the procedure for running MovingFeature Service.
-
-## 1. Procedure for executing Moving Feature Service
-
-- This service will operate in the following environments:
-
-    !!! note "__MovingFeature Service Running Environment__"
-
-            | <h2>__Essential Environment__</h2> | <h2>__Version__</h2>|
-            | ---------- | ---------- |
-            | <h2>__Java__</h2> | <h2>__OpenJDK8__</h2> |
-            | <h2>__Apache Spark__</h2> | <h2>__Apache Spark 2.4.3__</h2> |
-            | <h2>__Cassandra__</h2> | <h2>__Cassandra 3.11.3__</h2> |
-            | <h2>__Stratio's Cassandra Lucene Index__</h2> | <h2>__cassandra-lucene-index 3.11.3__</h2> |
-
-
-- The user can obtain the detailed information for installing Cassandra from the [__2. Build Cassandra and set up extended library__](#2-build-cassandra-and-set-up-extended-libraries) part
-    - ==The user must connect to Cassandra before the server is starting==
-
-- The user can obtain the detailed information for installing Apache Spark from the [__3. Build Apache Spark__](#3-build-apache-spark) part
-  
-  
----
-
-### 1.1 Building MovingFeature Service
-
-- This service is provided as a zip file. To extract the zip file from the machine on which the service runs.
-
-    ```sh
-    $ unzip mfjson.zip
-    ```
-  
-- MovingFeature Service Directory Configuration
-
-![Directory](img/directory.png)
-
-- MovingFeature Service File List
-
-    !!! note "__Information for Service File__"
-
-        | <h2>__Created File__</h2> | <h2>__Version__</h2>|
-        | ---------- | ---------- |
-        | <h2>__run_noatuh.sh__</h2> | <h2>__Executable file without pntml__<br>(Execute on Local system) </h2> |
-        | <h2>__run_pntml.sh__</h2> | <h2>__Executable file with pntml__ </h2></h2> |
-        | <h2>__application.yaml__</h2> | <h2>__Web Configuration File__</h2> |
-        | <h2>__engine.yaml__</h2> | <h2>__Engine Configuration File (Apache Spark)__</h2> |
-        | <h2>__store.yaml__</h2> | <h2>__Store Configuration File (Cassandra)__</h2> |
-        | <h2>__drop-keyspaces.cql__</h2> | <h2>__Delete Existing Data CQL__</h2> |
-        | <h2>__initialize-auth.cql__</h2> | <h2>__Generation the unique user id for Cassandra__</h2> |
-        | <h2>__initialize-data.cql__</h2> | <h2>__Cassandra Initialization CQL__</h2> |
-        | <h2>__insert-users.cql__</h2> | <h2>__Cassandra Initialization CQL__</h2> |
-        | <h2>__job-result.cql__</h2> | <h2>__Cassandra Initialization CQL__</h2> |
-        | <h2>__movingfeature-web-0.3.0-SNAPSHOT.jar__</h2> | <h2>__MovingFeature Service Main__</h2> |
-
-- The following files must be edited for your environment prior to running the service:
-
-    --> ==__Web configuration file__== : __mfjson/bin/config/application.yaml__  
-    --> ==__Engine configuration file__== : __mfjson/bin/config/engine.yaml__  
-    --> ==__Store configuration file__== : __mfjson/bin/config/store.yaml__
-
-
-#### 1.1.1 To set up a Web configuration file 
-
-Web settings by editing the <__mfjosn/bin/config/application.yaml__>.
-
-1.  Configuring Moving Features Service URLs 
-
-    - Set the server address for the user to access the Moving Features Service.
-
-    ```yaml
-    movingfeature:
-        url: "Moving Features Service URL"
-    ```
-
-    !!! example "Service URL Configuration Example"
-        ![Service_URL_Configuration_Example](img/Service_URL_Configuration_Example.png)
-    
-
-#### 1.1.2 To set up a store configuration file
-
-Store settings are done by editing <__mfjson/bin/config/store.yaml__>.  
-Before configuring this configuration, create a Cassandra environment.  
-Reference: [Building 2 Cassandra](#2-build-cassandra-and-set-up-extended-libraries) and Configuring Extended Libraries.
-
-1. Configuring Cassandra to Connect
-    
-    - Configure the connection destination for Cassandra to store data.
-
-    ```yaml
-    nodes:
-        - host: "HostName or IP address"
-          port: "Port Number"
-    ```
-
-    !!! example "Cassandra Configuration Example"
-        ![Cassandra_Configuration_Example](img/Cassandra_Configuration_Example.png)
-
-2. Access User Settings
-
-    - If you have limited access to Cassandra, you must configure a username and password for the user who can access it.
-
-    ```yaml
-    authentication:
-        user: "UserName"
-        password: "Password"
-    ```
-
-#### 1.1.3 To set up a engine configuration file
-
-Engine settings are done by editing <__mfjson/bin/config/engine.yaml__>.  
-Before configuring this configuration, create a Apache Spark environment.  
-Reference: [Building 3 Apache Spark](#3-build-apache-spark).
-
-1. Configuring Apache Spark to Connect
-
-- Configure the connection destination for Cassandra to store data.
-
-    !!! example "Apache Spark Configuration Example"
-
-        === "Information of the setting items"
-
-            - For more detailed information, please refer to the [Spark Configuration](https://spark.apache.org/docs/latest/configuration.html){:target="_blank"} section of the official document.
-                - Link for [Spark Configuration](https://spark.apache.org/docs/latest/configuration.html){:target="_blank"}
-
-            ```yaml
-            spark:
-                home:
-                master: # Run Spark locally with as many worker threads as logical cores on your machine.
-                appname: # The name of your application. This will appear in the UI and in log data.
-                deploymode: # The deploy mode of Spark driver program, either "client" or "cluster", Which means to launch driver program locally ("client") or remotely ("cluster") on one of the nodes inside the cluster.
-                verbose: # Print out fine-grained debugging information by running spark-submit
-                conf:
-                    - key: "spark.default.parallelism"
-                    value: # Default number of partitions in RDDs returned by transformations like join, reduceByKey, and parallelize when not set by user
-                    - key: "spark.executor.cores"
-                    value: # Number of virtual cores
-                    - key: "spark.executor.memory"
-                    value: # Size of memory to use for each executor that runs the task
-                    - key: "spark.driver.memory"
-                    value: # Size of memory to use for the driver
-                    - key: "spark.driver.cores"
-                    value: # Number of virtual cores to use for the driver
-                    - key: "spark.driver.maxResultSize"
-                    value: # Limit of total size of serialized results of all partitions for each Spark action (e.g. collect) in bytes. Should be at least 1M, or 0 for unlimited.
-                    - key: "spark.driver.port"
-                    value: # Port for the driver to listen on
-                    - key: "spark.blockManager.port"
-                    value: # Port for all block managers to listen on
-                    - key: "spark.driver.blockManager.port"
-                    value: # Driver-specific port for the block manager to listen on, for cases where it cannot use the same configuration as executors.
-                    - key: "spark.broadcast.port"
-                    value: # Port for the driver's HTTP broadcast server to listen on.
-                    - key: "spark.cores.max"
-                    value: # The maximum amount of CPU cores to request for the application from across the cluster
-                    - key: "spark.rpc.message.maxSize"
-                    value: # Maximum message size (in MiB) to allow in "control plane" communication
-                jarsPath: ../sparkjars
-                serverClassPath: /mnt/PnTML/MF/lib/
-                parallel: 1 # threads of job
-                lastScanSecond:  0.1
-            ```
-
-        === "Example for configuration"
-
-            ```yaml
-            spark:
-                home:
-                master: local[*]
-                appname: movingfeature-
-                deploymode: client
-                verbose: true
-                conf:
-                    - key: "spark.default.parallelism"
-                    value: 20
-                    - key: "spark.executor.cores"
-                    value: 2
-                    - key: "spark.executor.memory"
-                    value: 10g
-                    - key: "spark.driver.memory"
-                    value: 10g
-                    - key: "spark.driver.cores"
-                    value: 2
-                    - key: "spark.driver.maxResultSize"
-                    value: 4g
-                    - key: "spark.driver.port"
-                    value: 30055
-                    - key: "spark.blockManager.port"
-                    value: 30060
-                    - key: "spark.driver.blockManager.port"
-                    value: 30060
-                    - key: "spark.broadcast.port"
-                    value: 30065
-                    - key: "spark.cores.max"
-                    value: 20
-                    - key: "spark.rpc.message.maxSize"
-                    value: 256
-                jarsPath: ../sparkjars
-                serverClassPath: /mnt/PnTML/MF/lib/
-                parallel: 1 # threads of job
-                lastScanSecond:  0.1
-            ```
-    
-    !!! error "__Reminder__"
-
-        <h3>If the value of master included in engine.yaml is not __"local"__, users must copy the all of jars included in the sparkjars to the lib of the worker in each Spark Cluster.<h3>
-
----
-
-### 1.2 Starting and Stopping MovingFeature Service
-
-1. MovingFeature service is started by executing the __sh__ file.
-
-    - If the user can access to Moving Features Server, running the "__mfjson/bin/run_pntml.sh__"
-
-    ```sh
-    $ sh mfjson/bin/run_pntml.sh
-    ```
-
-    - If the user can not access to Moving Features Server, running the "__mfjson/bin/run_noauth.sh__"
-  
-    ```sh
-    $ sh mfjson/bin/run_noauth.sh
-    ```
-
-    - If End product initialize is displayed on the screen, the boot is complete.
-
-    !!! example "Example of MovingFeature Service launch indication"
-
-        ```sh
-        2019-04-05 15:10:01.044 INFO 195 [main] o.a.c.m.s.connector.cassandra.Connector : Close connection.
-        2019-04-05 15:10:03.293 INFO 195 [main] o.a.c.m.s.connector.cassandra.Connector : Closed connection.
-        2019-04-05 15:10:03.296 INFO 195 [main] o.a.c.m.w.i.ProductionInitializer : End product initialize.
-        ```
-
-2. Services performed in __sh__ will stop at CTRL+C
-
----
-
-## 2. Build Cassandra and set up extended libraries
-
-This document only describes the basic construction of Cassandra.  
-Please visit Cassandra's website for detailed configuration and tuning.  
-
-### 2.1 Building Cassandra
-
-MovingFeature Service works with version __3.11.3__ Cassandra.
-
-1. Download Cassandra
-
-    Click this [Download Cassandra](http://archive.apache.org/dist/cassandra/3.11.3/apache-cassandra-3.11.3-bin.tar.gz)
-
-    Please download the version 3.11.3.
-
-    ```sh
-    wget http://archive.apache.org/dist/cassandra/3.11.3/apache-cassandra-3.11.3-bin.tar.gz
-    ```
-
-2. Deploy the Cassandra
-
-    Extract and deploy the downloaded tar.gz to your machine.  
-    Location can be anywhere, but a location with more storage capacity is recommended __/home/mf/cassandra__ in this document.
-
-    ```sh
-    $ tar xzvf apache-cassandra-3.11.3-bin.tar.gz
-    $ mv apache-cassandra-3.11.3 /home/mf/cassandra
-    ```
-
-### 2.2 Deployment of Stratio's Cassandra Lucene Index Library
-
-To use the Moving Feature Service, you must deploy the Library Stratio's Cassandra Lucene Index in Cassandra, which adds text search capabilities for Lucene.  
-Please install the library as the same version with Cassandra.
-
-#### 2.2.1 Install the library from Maven Repository
-
-This library can be downloaded from the Maven Repository.
-
-1. Download the library from the Maven Repository website
-
-    ```sh
-    $ wget https://repo1.maven.org/maven2/com/stratio/cassandra/cassandra-lucene-index-plugin/3.11.3.0/cassandra-lucene-index-plugin-3.11.3.0.jar    
-    ```
-
-2. Library deployment
+![pinsout](img/PinSout.png)
+
+# *PinSout* (*P*oint *IN* *S*pace *OUT*)
+Accelerating 3D Indoor Space Construction from Point Clouds with Deep Learning
+
+## Introduction
+In general, the procedure for creating a 3D model has five steps that are Data Segmentation, Components separation, Surface generation, Components assembling and Alignment. 
+Actually, it is performed using man-power, all tasks involve very high time-consuming and labor-intensive. 
+We think about how can improve the processes quickly and easily.
+
+So, we start a project to generate 3d models from raw point data automatically.
+Before we start, we need two pieces of background.
+
+  * ### PointCloud
+    **Point cloud** is a set of data point which is reflected a real-world by 3D scanning. 
+    The important thing is point cloud can include several features, including geometry information, color, intensity and so on.
+    Specially, we can use geometry information of point cloud data for constructing a 3D model
+  * ### [CityGML]( https://www.opengeospatial.org/standards/citygml )
+    **OGC CityGML** is an open data model and XML-based format for the storage and exchange of semantic 3D city models. 
+    It is an application schema for the Geography Markup Language version 3.1.1 (GML3), the extendible **international standard** for spatial data exchange issued by the **Open Geospatial Consortium (OGC)** and the **ISO TC211**. 
+    The aim of the development of CityGML is to reach a common definition of the basic entities, attributes, and relations of a 3D city model.
+
+From the process of manually building the 3D model(**CityGML**) from the point cloud data, we derived the three steps: Semantic Segmentation, Polygonization, and Featurization. 
+
+1. ***Semantic Segmentation*** - Classify semantics from point
+2. ***Polygonization*** - Construct polygons from point
+3. ***Featurizaiotn*** - Mapping between semantic features and surfaces
+
+So, in this project, our purpose is making each step results automatically as below figure.
+<div>
+  <img width="800" src=https://user-images.githubusercontent.com/10336074/63823756-e7ebb000-c98f-11e9-97a0-8454cf0be5e1.png>
+</div>
+
+## Dependencies
+We used the following open sources in each step (*Semantic segmentation, Polygonization, and Featurizaiotn*).
+1. [PointNet] - Deep Learning on Point Sets for 3D Classification and Segmentation
+2. [Python-PCL] - Small python binding to the point cloud library
+3. [3DCityDB] - Free 3D geodatabase to store, represent, and manage virtual 3D city models
+
+  * #### PointNet
+      Deep learning can help to analyze massive point cloud data. 
+      In terms of classification, clustering, segmentation, annotation and so on. 
+      PointNet is a popular open deep neural network for analyzing point cloud data. 
+      We can segment the indoor components such as walls, ceilings, floor, windows, and door. 
+      Using the Stanford data to do the test.
+
+  * #### Point Cloud Library (PCL)
+      PCL is the open-source project for 2D/3D image and point cloud processing. 
+      it contains numerous state-of-the-art algorithms and create surfaces from point clouds and visualize them. 
+      Usually, the indoor space is a closed space consisting of a planar surface, so we are using the RANSAC to extract the plane.
+
+  * #### 3DCityDB
+      Using the 3DCityDB to deal with the CityGML. 
+      We are mapping the geometry and semantic using the table defined in 3DCityDB. 
+      3DCityDB is the free geodatabase to store, represent, and manage virtual 3D city models on top of a standard spatial relational database. 
+      Database schema implements the CityGML standard.
+
+## System Requirements
+This release has been tested on Linux Ubuntu 16.04 with
+> Anaconda - Python 2.7.6  
+> PostgreSQL DBMS >= 9.3 with PostGIS extension >= 2.0
+
+## Installation
+* [PostgreSQL with PostGIS](https://www.postgresql.org/download/)
+
+* [Anaconda](https://www.anaconda.com/distribution/)
+
+* [PointNet]  
    
-    Deployment of the downloaded library in Cassandra.  
-    The location is <CASSANDRA_HOME>/lib/.  
-    In this document, it is deployed in "/home/mf/cassandra/lib/".  
+* [Python-PCL]  
 
-    ```sh
-    $ cp cassandra-lucene-index-plugin-3.11.3.0.jar /home/mf/cassandra/lib/
+* [3DCityDB](https://www.3dcitydb.org/3dcitydb/d3ddatabase/)  
+
+* [3DCityDB importer&exporter]
+
+* [FZK Viewer]
+
+* [CloudCompare]
+
+## Quick Start with Example
+
+### -) Data information
+* [Stanford 2D-3D-Semantics Dataset](http://buildingparser.stanford.edu/dataset.html)
+* Office type rooms, except complex types ( Convert all offices in area_1)
+
+### 1) Preparing to use **PointNet**
+1. Run [PointNet] and go to the **sem_seg** folder.
+    * Download 3D indoor parsing dataset (S3DIS Dataset) for testing and visualization. 
+    Dataset version 1.2 is used in this work.
+    * Before we start collect_indoor3d_data.py, we change the entry in the **"meta/class_names.txt"** to ceiling, floor, wall, door and window
+    * Change the value of **"g_class2color and g_easy_view_labels"** in the "indoor3d_util.py" 
+    ```python
+    g_classes = [x.rstrip() for x in open(os.path.join(BASE_DIR, 'meta/class_names.txt'))]
+    """g_class2color = {'ceiling':	 [0, 255, 0],  # 0
+                 'floor':	 [0, 0, 255],      # 1
+                 'wall':	 [0, 255, 255],    # 2
+                 'beam':     [255, 255, 0],    # 3
+                 'column':   [255, 0, 255],    # 4
+                 'window':   [100, 100, 255],  # 5
+                 'door':     [200, 200, 100],  # 6
+                 'table':    [170, 120, 200],  # 7
+                 'chair':    [255, 0, 0],      # 8
+                 'sofa':     [200, 100, 100],  # 9
+                 'bookcase': [10, 200, 100],   # 10
+                 'board':    [200, 200, 200],  # 11
+                 'clutter':  [50, 50, 50]}     # 12
+           g_easy_view_labels = [7, 8, 9, 10, 11, 1]"""
+    g_class2color = {'ceiling':	 [0, 255, 0],  # 0
+                 'floor':	 [0, 0, 255],        # 1
+                 'wall':	 [0, 255, 255],       # 2                 
+                 'window':   [100, 100, 255],  # 3
+                 'door':     [200, 200, 100]}  # 4   
+    g_easy_view_labels = [0, 1, 2, 3, 4]
     ```
-
-#### 2.2.2 Creating a Library from a Source
-
-This library can also be created from sources.
-Create from source using OpenJDK8, Git, and Maven.
-If it is not already installed, please install it.
-
-1. Obtaining Sources and Creating Libraries
-
-    The source can be obtained from GitHub.  
-    You can get it from GitHub anywhere.  
-
     ```sh
-    $ git clone https://github.com/Stratio/cassandra-lucene-index.git
+    $ python collect_indoor3d_data.py
     ```
-
-    Go to the created directory.
-
     ```sh
-    $ cd cassandra-lucene-index
+    $ python gen_indoor3d_h5.py
+    ```  
+    * To prepare your HDF5 data, you need to firstly download 3D indoor parsing dataset and then use training if no model has been learned
+
+2. Training  
+    * Change the value of **"NUM_CLASSES"** and directory path in "train.py"
+    ```python
+    """ NUM_CLASSES = 13 """
+    NUM_CLASSES = 5
+    ALL_FILES = provider.getDataFiles('Your indoor3d_sem_seg_hdf5_data path/all_files.txt')
+    room_filelist = [line.rstrip() for line in open('Your indoor3d_sem_seg_hdf5_data path/room_filelist.txt')]
     ```
-
-    Switch branch to branch-3.11.3
-
+    * Once you have downloaded prepared HDF5 files or prepared them by yourself, to start training:
     ```sh
-    $ git checkout branch-3.11.3
+    $ python train.py --log_dir log_5cls --test_area 6
     ```
+    In default, a simple model based on vanilla PointNet is used for training. 
+    Area_6 is used for the test set.
 
-    Create a library.
+3. Test  
+    * Testing requires a download of 3D indoor parsing data and preprocessing with collect_indoor3d_data.py
 
+    After training, use batch_inference.py command to segment rooms in the test set. 
+    In this work, we use 6-fold training that trains six models. 
+        
+        For model_1, area_2 ~ _6 are used as the training data set, and area_1 is used as the test data set. 
+        For model_2, area_1, _3 ~ _6 are used as the training data set and area_2 is used as the test data set
+        ...
+         
+    Note that S3DIS dataset paper uses a different 3-fold training, which was not publicly announced at the time of our work.
+    * Chage the value of **"NUM_CLASSES"** in the "batch_inference.py" 
+    ```python
+    """ NUM_CLASSES = 13 """
+    NUM_CLASSES = 5
+    ```
+    For example, to test model_6, using the below command:
     ```sh
-    $ mvn clean package
+    $ python batch_inference.py --model_path log_5cls/model.ckpt --dump_dir log_5cls/dump --output_filelist log_5cls/output_filelist.txt --room_data_filelist meta/area6_data_label.txt --visu
     ```
+    --model_path : The path where model.ckpt file is stored  
+    --dump_dir : The folder where forecasted results are stored  
+    --output_filelist : Set file path/name where the path of the prediction result is stored  
+    --room_data_filelist : .npy file path to test  
+    --visu : Use when visualizing  
 
-    The library is created with the following name.  
-    The end of the version may vary depending on when you got it from GitHub.
+4. Check the result  
+    * Check the result with CloudCompare.
+    
+### 2) Generate CityGML data from point cloud 
+1. Run **PostgreSQL pgadmin**
 
+2. Run **PinSout**  
+    * Modify the contents of area_data_label to "data/***your result folder***/Area_1_office_1.npy"
+    * Add the PinSout's files in **sem_seg**
+    * We are conducting the three functions in the **batch_inference.py**
+    1. ***Semantic Segmentation*** - Classify semantics from point
+    ```python
+    """ Ceiling ""
+    if pred[i] == 0:
+    cnt_ceiling += 1
+    coord_ceiling = str(pts[i, 6]) + ' ' + str(pts[i, 7]) + ' ' + str(pts[i, 8]) + '\n'
+    ceiling_list.append(coord_ceiling)
+    ceiling_list2.append([pts[i, 6], pts[i, 7], pts[i, 8]])
+    fout_ceiling_label.write('ply\n'
+                             'format ascii 1.0\n'
+                             'element vertex %d\n'
+                             'property float x\n'
+                             'property float y\n'
+                             'property float z\n'
+                             'end_header\n' % cnt_ceiling)
+    fout_ceiling_label.writelines(ceiling_list)
+    ceiling_cloud = pc.PointCloud() 
+    ceiling_cloud.from_array(np.asarray(ceiling_list2, dtype=np.float32))
+    ```
+    2. ***Polygonization*** - Construct polygons from point
+    ```python
+    make_gml_data2 = mcd2.MakeCityGMLData(pred_cloud, ceiling_cloud, floor_cloud, wall_cloud, door_cloud, window_cloud)
+    wall_surface, ceiling_surface, floor_surface, door_surface, window_surface = make_gml_data2.make_point_surface()
+    ```
+    3. ***Featurizaiotn*** - Mapping between semantic features and surfaces
+    ```python
+    make_gml_file2 = gml2.PointCloudToCityGML(ceiling_surface, floor_surface, wall_surface, door_surface, window_surface)
+    make_gml_file2.MakeRoomObject()
+    ```
+    * Running the **"batch_inference.py"**
     ```sh
-    plugin/target/cassandra-lucene-index-plugin-3.11.3.1-RC1-SNAPSHOT.jar
+    $ python batch_inference.py --model_path log_5cls/model.ckpt --dump_dir log_5cls/dump --output_filelist log_5cls/output_filelist.txt --room_data_filelist meta/Your area_data_label.txt --visu
     ```
+3. Export to CityGML file 
+    * Check the result using **pgadmin** or **3DCityDB importer&exporter**.
+    * Export the CityGML file using **3DCityDB importer&exporter**.
 
-2. Library deployment
+4. Check the CityGML file  
+    * Run the FZK Viewer to visualize the CityGML file.
+    * Select and execute the "Local CRS" at the bottom of the Spatial Reference System.
+    
+## Usage
+For detail information about usage, please see the [User Guide](https://github.com/aistairc/PinSout/wiki)
+* [Polygonization](https://github.com/aistairc/PinSout/wiki/Make_CityGML_Data)
+* [Featurizaiotn](https://github.com/aistairc/PinSout/wiki/PointCloud_To_CityGML)
+* [Point list sorting](https://github.com/aistairc/PinSout/wiki/Point_Sort)
 
-    Deployment of the downloaded library in Cassandra.  
-    The location is <CASSANDRA_HOME>/lib/.  
-    In this document, it is deployed in "/home/mf/cassandra/lib/".  
+## License
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) licenses. - see the [LICENSE](https://github.com/aistairc/PinSout/blob/master/LICENSE) file for details
 
-    ```sh
-    $ cp plugin/target/cassandra-lucene-index-plugin-3.11.3.1-RC1-SNAPSHOT.jar /home/mf/cassandra/lib/
-    ```
+## Contact
+Should you have any questions, comments, or suggestions, please contact me at cho-wijae@aist.go.jp
 
-### 2.3 Deployment of JTS Topology Suite library
+**_Wijae Cho_**
 
-Stratio's Cassandra Lucene Index library uses JTS Topology Suite library when handling location information.  
-Since MovingFeature Service searches by location information, this library also needs to be placed in Cassandra.  
-It must same the version of the library to the version required by Stratio's Cassandra Lucene Index. 
-(As of April 8, 2019: jts-core-1.14.0.jar)  
-This library can be downloaded from Maven Repository.  
+https://www.airc.aist.go.jp/en/dprt/
 
-1. Download the library from the Maven Repository website
+[PostgreSQL with PostGIS]: <https://www.postgresql.org/download/>  
+[Anaconda]: <https://www.anaconda.com/distribution/>  
+[PointNet]: <https://github.com/charlesq34/pointnet>  
+[Python-PCL]: <https://github.com/strawlab/python-pcl>  
+[3DCityDB]: <https://github.com/3dcitydb/3dcitydb>  
+[3DCityDB importer&exporter]: <https://www.3dcitydb.org/3dcitydb/d3dimpexp/>  
+[FZK Viewer]: <https://www.iai.kit.edu/1302.php>  
+[CloudCompare]: <https://www.danielgm.net/cc/>  
 
-    ```sh
-    wget https://repo1.maven.org/maven2/com/vividsolutions/jts-core/1.14.0/jts-core-1.14.0.jar
-    ```
-
-2. Library deployment
-
-    Deployment of the downloaded library in Cassandra.  
-    The location is <CASSANDRA_HOME>/lib/.  
-    In this document, it is deployed in "/home/mf/cassandra/lib/".  
-
-    ```sh
-    $ cp jts-core-1.14.0.jar /home/mf/cassandra/lib/
-    ```
-
----
-
-## 3. Build Apache Spark
-
-This document only describes the basic construction of Apache Spark.  
-Please visit Apache Spark's website for detailed configuration and tuning.  
-
-### 3.1 Build Apache Spark 
-
-MovingFeature Service works with version __2.4.3__ Apache Spark.
-
-1. Download Apache Spark
-
-    Click this [Download Apache Spark](http://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz)
-
-    Please download the version 2.4.3
-
-    ```sh
-    wget http://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz
-    ```
-
-2. Deploy the Apache Spark
-
-    Extract and deploy the downloaded tar.gz to your machine.     
-    Location can be anywhere, but a location with more storage capacity is recommended "__/home/mf/spark__" in this document.
-<!-- /opt/spark -->
-    ```sh
-    $ tar xzvf spark-2.4.3-bin-hadoop2.7.tgz
-    $ sudo mv spark-2.4.3-bin-hadoop2.7/ /home/mf/spark 
-    ```
-
-### 3.2 Set Apache Spark environment
-
-1. Set the Apache Spark execution path
-
-```sh
-$ vim ~/.bashrc
-```
-2. Add the path of sprak in the "__~/.bashrc__"
-
-```vim
-export SPARK_HOME=/home/mf/spark
-export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
-```
-3. Activate the changes.
-
-```sh
-$ source ~/.bashrc
-```

@@ -1,7 +1,7 @@
-site_name: DPRT Moving Features Document
-site_url: https://breeze0512.gitlab.io/dprt-mf-docs
+site_name: PinSout Document
+site_url: https://breeze0512.github.io/PinSout
 site_dir: public
-repo_url: https://github.com/aistairc/dprt-mf
+repo_url: https://github.com/aistairc/PinSout
 repo_name: aistairc/dprt-mf
 
 copyright: |
