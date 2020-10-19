@@ -1,171 +1,1109 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://breeze0512.gitlab.io/dprt-mf-docs/">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>DPRT Moving Features Document</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.947af8d5.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>My Docs</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body class="homepage">
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href=".">My Docs</a>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
+        <meta name="theme-color" content="">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="drac-purple" data-md-color-accent="drac-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-start" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://breeze0512.gitlab.io/dprt-mf-docs" title="DPRT Moving Features Document" class="md-header-nav__button md-logo" aria-label="DPRT Moving Features Document">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            DPRT Moving Features Document
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Getting Start
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/aistairc/dprt-mf/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aistairc/dprt-mf
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Getting Start
+      </a>
+    
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://breeze0512.gitlab.io/dprt-mf-docs" title="DPRT Moving Features Document" class="md-nav__button md-logo" aria-label="DPRT Moving Features Document">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    DPRT Moving Features Document
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/dprt-mf/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aistairc/dprt-mf
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Getting Start
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="." title="Getting Start" class="md-nav__link md-nav__link--active">
+      Getting Start
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-procedure-for-executing-moving-feature-service" class="md-nav__link">
+    1. Procedure for executing Moving Feature Service
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Procedure for executing Moving Feature Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-building-movingfeature-service" class="md-nav__link">
+    1.1 Building MovingFeature Service
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Building MovingFeature Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-to-set-up-a-web-configuration-file" class="md-nav__link">
+    1.1.1 To set up a Web configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-to-set-up-a-store-configuration-file" class="md-nav__link">
+    1.1.2 To set up a store configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-to-set-up-a-engine-configuration-file" class="md-nav__link">
+    1.1.3 To set up a engine configuration file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-starting-and-stopping-movingfeature-service" class="md-nav__link">
+    1.2 Starting and Stopping MovingFeature Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-build-cassandra-and-set-up-extended-libraries" class="md-nav__link">
+    2. Build Cassandra and set up extended libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Build Cassandra and set up extended libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-building-cassandra" class="md-nav__link">
+    2.1 Building Cassandra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-deployment-of-stratios-cassandra-lucene-index-library" class="md-nav__link">
+    2.2 Deployment of Stratio's Cassandra Lucene Index Library
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Deployment of Stratio's Cassandra Lucene Index Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-install-the-library-from-maven-repository" class="md-nav__link">
+    2.2.1 Install the library from Maven Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-creating-a-library-from-a-source" class="md-nav__link">
+    2.2.2 Creating a Library from a Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-deployment-of-jts-topology-suite-library" class="md-nav__link">
+    2.3 Deployment of JTS Topology Suite library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-apache-spark" class="md-nav__link">
+    3. Build Apache Spark
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Build Apache Spark">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-build-apache-spark" class="md-nav__link">
+    3.1 Build Apache Spark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-set-apache-spark-environment" class="md-nav__link">
+    3.2 Set Apache Spark environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
             
-            <li class="nav-item" data-level="1"><a href="#welcome-to-mkdocs" class="nav-link">Welcome to MkDocs</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#commands" class="nav-link">Commands</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#project-layout" class="nav-link">Project layout</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
-</div></div>
-                    <div class="col-md-9" role="main">
-
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-procedure-for-executing-moving-feature-service" class="md-nav__link">
+    1. Procedure for executing Moving Feature Service
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Procedure for executing Moving Feature Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-building-movingfeature-service" class="md-nav__link">
+    1.1 Building MovingFeature Service
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Building MovingFeature Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-to-set-up-a-web-configuration-file" class="md-nav__link">
+    1.1.1 To set up a Web configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-to-set-up-a-store-configuration-file" class="md-nav__link">
+    1.1.2 To set up a store configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-to-set-up-a-engine-configuration-file" class="md-nav__link">
+    1.1.3 To set up a engine configuration file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-starting-and-stopping-movingfeature-service" class="md-nav__link">
+    1.2 Starting and Stopping MovingFeature Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-build-cassandra-and-set-up-extended-libraries" class="md-nav__link">
+    2. Build Cassandra and set up extended libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Build Cassandra and set up extended libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-building-cassandra" class="md-nav__link">
+    2.1 Building Cassandra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-deployment-of-stratios-cassandra-lucene-index-library" class="md-nav__link">
+    2.2 Deployment of Stratio's Cassandra Lucene Index Library
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Deployment of Stratio's Cassandra Lucene Index Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-install-the-library-from-maven-repository" class="md-nav__link">
+    2.2.1 Install the library from Maven Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-creating-a-library-from-a-source" class="md-nav__link">
+    2.2.2 Creating a Library from a Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-deployment-of-jts-topology-suite-library" class="md-nav__link">
+    2.3 Deployment of JTS Topology Suite library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-apache-spark" class="md-nav__link">
+    3. Build Apache Spark
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Build Apache Spark">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-build-apache-spark" class="md-nav__link">
+    3.1 Build Apache Spark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-set-apache-spark-environment" class="md-nav__link">
+    3.2 Set Apache Spark environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/dprt-mf/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="getting-start"><strong>Getting Start</strong><a class="headerlink" href="#getting-start" title="Permanent link"></a></h1>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>This document describes the procedure for running MovingFeature Service.</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre></div>
-            </div>
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = ".",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+<h2 id="1-procedure-for-executing-moving-feature-service">1. Procedure for executing Moving Feature Service<a class="headerlink" href="#1-procedure-for-executing-moving-feature-service" title="Permanent link"></a></h2>
+<ul>
+<li>
+<p>This service will operate in the following environments:</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>MovingFeature Service Running Environment</strong><table>
+<thead>
+<tr>
+<th><h2><strong>Essential Environment</strong></h2></th>
+<th><h2><strong>Version</strong></h2></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><h2><strong>Java</strong></h2></td>
+<td><h2><strong>OpenJDK8</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>Apache Spark</strong></h2></td>
+<td><h2><strong>Apache Spark 2.4.3</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>Cassandra</strong></h2></td>
+<td><h2><strong>Cassandra 3.11.3</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>Stratio's Cassandra Lucene Index</strong></h2></td>
+<td><h2><strong>cassandra-lucene-index 3.11.3</strong></h2></td>
+</tr>
+</tbody>
+</table>
+</p>
 </div>
+</li>
+<li>
+<p>The user can obtain the detailed information for installing Cassandra from the <a href="#2-build-cassandra-and-set-up-extended-libraries"><strong>2. Build Cassandra and set up extended library</strong></a> part</p>
+<ul>
+<li><mark>The user must connect to Cassandra before the server is starting</mark></li>
+</ul>
+</li>
+<li>
+<p>The user can obtain the detailed information for installing Apache Spark from the <a href="#3-build-apache-spark"><strong>3. Build Apache Spark</strong></a> part</p>
+</li>
+</ul>
+<hr />
+<h3 id="11-building-movingfeature-service">1.1 Building MovingFeature Service<a class="headerlink" href="#11-building-movingfeature-service" title="Permanent link"></a></h3>
+<ul>
+<li>
+<p>This service is provided as a zip file. To extract the zip file from the machine on which the service runs.</p>
+<div class="highlight"><pre><span></span><code>$ unzip mfjson.zip
+</code></pre></div>
 
-    </body>
+</li>
+<li>
+<p>MovingFeature Service Directory Configuration</p>
+</li>
+</ul>
+<p><img alt="Directory" src="img/directory.png" /></p>
+<ul>
+<li>
+<p>MovingFeature Service File List</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>Information for Service File</strong></p>
+<table>
+<thead>
+<tr>
+<th><h2><strong>Created File</strong></h2></th>
+<th><h2><strong>Version</strong></h2></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><h2><strong>run_noatuh.sh</strong></h2></td>
+<td><h2><strong>Executable file without pntml</strong><br>(Execute on Local system) </h2></td>
+</tr>
+<tr>
+<td><h2><strong>run_pntml.sh</strong></h2></td>
+<td><h2><strong>Executable file with pntml</strong> </h2></h2></td>
+</tr>
+<tr>
+<td><h2><strong>application.yaml</strong></h2></td>
+<td><h2><strong>Web Configuration File</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>engine.yaml</strong></h2></td>
+<td><h2><strong>Engine Configuration File (Apache Spark)</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>store.yaml</strong></h2></td>
+<td><h2><strong>Store Configuration File (Cassandra)</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>drop-keyspaces.cql</strong></h2></td>
+<td><h2><strong>Delete Existing Data CQL</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>initialize-auth.cql</strong></h2></td>
+<td><h2><strong>Generation the unique user id for Cassandra</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>initialize-data.cql</strong></h2></td>
+<td><h2><strong>Cassandra Initialization CQL</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>insert-users.cql</strong></h2></td>
+<td><h2><strong>Cassandra Initialization CQL</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>job-result.cql</strong></h2></td>
+<td><h2><strong>Cassandra Initialization CQL</strong></h2></td>
+</tr>
+<tr>
+<td><h2><strong>movingfeature-web-0.3.0-SNAPSHOT.jar</strong></h2></td>
+<td><h2><strong>MovingFeature Service Main</strong></h2></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li>
+<p>The following files must be edited for your environment prior to running the service:</p>
+<p>&rarr; <mark><strong>Web configuration file</strong></mark> : <strong>mfjson/bin/config/application.yaml</strong><br />
+&rarr; <mark><strong>Engine configuration file</strong></mark> : <strong>mfjson/bin/config/engine.yaml</strong><br />
+&rarr; <mark><strong>Store configuration file</strong></mark> : <strong>mfjson/bin/config/store.yaml</strong></p>
+</li>
+</ul>
+<h4 id="111-to-set-up-a-web-configuration-file">1.1.1 To set up a Web configuration file<a class="headerlink" href="#111-to-set-up-a-web-configuration-file" title="Permanent link"></a></h4>
+<p>Web settings by editing the &lt;<strong>mfjosn/bin/config/application.yaml</strong>&gt;.</p>
+<ol>
+<li>
+<p>Configuring Moving Features Service URLs </p>
+<ul>
+<li>Set the server address for the user to access the Moving Features Service.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">movingfeature</span><span class="p">:</span>
+    <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;Moving</span><span class="nv"> </span><span class="s">Features</span><span class="nv"> </span><span class="s">Service</span><span class="nv"> </span><span class="s">URL&quot;</span>
+</code></pre></div>
+
+<div class="admonition example">
+<p class="admonition-title">Service URL Configuration Example</p>
+<p><img alt="Service_URL_Configuration_Example" src="img/Service_URL_Configuration_Example.png" /></p>
+</div>
+</li>
+</ol>
+<h4 id="112-to-set-up-a-store-configuration-file">1.1.2 To set up a store configuration file<a class="headerlink" href="#112-to-set-up-a-store-configuration-file" title="Permanent link"></a></h4>
+<p>Store settings are done by editing &lt;<strong>mfjson/bin/config/store.yaml</strong>&gt;.<br />
+Before configuring this configuration, create a Cassandra environment.<br />
+Reference: <a href="#2-build-cassandra-and-set-up-extended-libraries">Building 2 Cassandra</a> and Configuring Extended Libraries.</p>
+<ol>
+<li>
+<p>Configuring Cassandra to Connect</p>
+<ul>
+<li>Configure the connection destination for Cassandra to store data.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">nodes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="s">&quot;HostName</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">IP</span><span class="nv"> </span><span class="s">address&quot;</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="s">&quot;Port</span><span class="nv"> </span><span class="s">Number&quot;</span>
+</code></pre></div>
+
+<div class="admonition example">
+<p class="admonition-title">Cassandra Configuration Example</p>
+<p><img alt="Cassandra_Configuration_Example" src="img/Cassandra_Configuration_Example.png" /></p>
+</div>
+</li>
+<li>
+<p>Access User Settings</p>
+<ul>
+<li>If you have limited access to Cassandra, you must configure a username and password for the user who can access it.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">authentication</span><span class="p">:</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;UserName&quot;</span>
+    <span class="nt">password</span><span class="p">:</span> <span class="s">&quot;Password&quot;</span>
+</code></pre></div>
+
+</li>
+</ol>
+<h4 id="113-to-set-up-a-engine-configuration-file">1.1.3 To set up a engine configuration file<a class="headerlink" href="#113-to-set-up-a-engine-configuration-file" title="Permanent link"></a></h4>
+<p>Engine settings are done by editing &lt;<strong>mfjson/bin/config/engine.yaml</strong>&gt;.<br />
+Before configuring this configuration, create a Apache Spark environment.<br />
+Reference: <a href="#3-build-apache-spark">Building 3 Apache Spark</a>.</p>
+<ol>
+<li>
+<p>Configuring Apache Spark to Connect</p>
+</li>
+<li>
+<p>Configure the connection destination for Cassandra to store data.</p>
+<div class="admonition example">
+<p class="admonition-title">Apache Spark Configuration Example</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Information of the setting items</label><div class="tabbed-content">
+<ul>
+<li>For more detailed information, please refer to the <a href="https://spark.apache.org/docs/latest/configuration.html" target="_blank">Spark Configuration</a> section of the official document.<ul>
+<li>Link for <a href="https://spark.apache.org/docs/latest/configuration.html" target="_blank">Spark Configuration</a></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">spark</span><span class="p">:</span>
+    <span class="nt">home</span><span class="p">:</span>
+    <span class="nt">master</span><span class="p">:</span> <span class="c1"># Run Spark locally with as many worker threads as logical cores on your machine.</span>
+    <span class="nt">appname</span><span class="p">:</span> <span class="c1"># The name of your application. This will appear in the UI and in log data.</span>
+    <span class="nt">deploymode</span><span class="p">:</span> <span class="c1"># The deploy mode of Spark driver program, either &quot;client&quot; or &quot;cluster&quot;, Which means to launch driver program locally (&quot;client&quot;) or remotely (&quot;cluster&quot;) on one of the nodes inside the cluster.</span>
+    <span class="nt">verbose</span><span class="p">:</span> <span class="c1"># Print out fine-grained debugging information by running spark-submit</span>
+    <span class="nt">conf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.default.parallelism&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Default number of partitions in RDDs returned by transformations like join, reduceByKey, and parallelize when not set by user</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.executor.cores&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Number of virtual cores</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.executor.memory&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Size of memory to use for each executor that runs the task</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.memory&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Size of memory to use for the driver</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.cores&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Number of virtual cores to use for the driver</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.maxResultSize&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Limit of total size of serialized results of all partitions for each Spark action (e.g. collect) in bytes. Should be at least 1M, or 0 for unlimited.</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Port for the driver to listen on</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.blockManager.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Port for all block managers to listen on</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.blockManager.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Driver-specific port for the block manager to listen on, for cases where it cannot use the same configuration as executors.</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.broadcast.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Port for the driver&#39;s HTTP broadcast server to listen on.</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.cores.max&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># The maximum amount of CPU cores to request for the application from across the cluster</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.rpc.message.maxSize&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="c1"># Maximum message size (in MiB) to allow in &quot;control plane&quot; communication</span>
+    <span class="nt">jarsPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">../sparkjars</span>
+    <span class="nt">serverClassPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/mnt/PnTML/MF/lib/</span>
+    <span class="nt">parallel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span> <span class="c1"># threads of job</span>
+    <span class="nt">lastScanSecond</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Example for configuration</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">spark</span><span class="p">:</span>
+    <span class="nt">home</span><span class="p">:</span>
+    <span class="nt">master</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local[*]</span>
+    <span class="nt">appname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">movingfeature-</span>
+    <span class="nt">deploymode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">client</span>
+    <span class="nt">verbose</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">conf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.default.parallelism&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.executor.cores&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.executor.memory&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10g</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.memory&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10g</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.cores&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.maxResultSize&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4g</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30055</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.blockManager.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30060</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.driver.blockManager.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30060</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.broadcast.port&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30065</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.cores.max&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;spark.rpc.message.maxSize&quot;</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">256</span>
+    <span class="nt">jarsPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">../sparkjars</span>
+    <span class="nt">serverClassPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/mnt/PnTML/MF/lib/</span>
+    <span class="nt">parallel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span> <span class="c1"># threads of job</span>
+    <span class="nt">lastScanSecond</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</code></pre></div>
+
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title"><strong>Reminder</strong></p>
+<p><h3>If the value of master included in engine.yaml is not <strong>"local"</strong>, users must copy the all of jars included in the sparkjars to the lib of the worker in each Spark Cluster.<h3></p>
+</div>
+</li>
+</ol>
+<hr />
+<h3 id="12-starting-and-stopping-movingfeature-service">1.2 Starting and Stopping MovingFeature Service<a class="headerlink" href="#12-starting-and-stopping-movingfeature-service" title="Permanent link"></a></h3>
+<ol>
+<li>
+<p>MovingFeature service is started by executing the <strong>sh</strong> file.</p>
+<ul>
+<li>If the user can access to Moving Features Server, running the "<strong>mfjson/bin/run_pntml.sh</strong>"</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ sh mfjson/bin/run_pntml.sh
+</code></pre></div>
+
+<ul>
+<li>If the user can not access to Moving Features Server, running the "<strong>mfjson/bin/run_noauth.sh</strong>"</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ sh mfjson/bin/run_noauth.sh
+</code></pre></div>
+
+<ul>
+<li>If End product initialize is displayed on the screen, the boot is complete.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example of MovingFeature Service launch indication</p>
+<div class="highlight"><pre><span></span><code><span class="m">2019</span>-04-05 <span class="m">15</span>:10:01.044 INFO <span class="m">195</span> <span class="o">[</span>main<span class="o">]</span> o.a.c.m.s.connector.cassandra.Connector : Close connection.
+<span class="m">2019</span>-04-05 <span class="m">15</span>:10:03.293 INFO <span class="m">195</span> <span class="o">[</span>main<span class="o">]</span> o.a.c.m.s.connector.cassandra.Connector : Closed connection.
+<span class="m">2019</span>-04-05 <span class="m">15</span>:10:03.296 INFO <span class="m">195</span> <span class="o">[</span>main<span class="o">]</span> o.a.c.m.w.i.ProductionInitializer : End product initialize.
+</code></pre></div>
+
+</div>
+</li>
+<li>
+<p>Services performed in <strong>sh</strong> will stop at CTRL+C</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-build-cassandra-and-set-up-extended-libraries">2. Build Cassandra and set up extended libraries<a class="headerlink" href="#2-build-cassandra-and-set-up-extended-libraries" title="Permanent link"></a></h2>
+<p>This document only describes the basic construction of Cassandra.<br />
+Please visit Cassandra's website for detailed configuration and tuning.  </p>
+<h3 id="21-building-cassandra">2.1 Building Cassandra<a class="headerlink" href="#21-building-cassandra" title="Permanent link"></a></h3>
+<p>MovingFeature Service works with version <strong>3.11.3</strong> Cassandra.</p>
+<ol>
+<li>
+<p>Download Cassandra</p>
+<p>Click this <a href="http://archive.apache.org/dist/cassandra/3.11.3/apache-cassandra-3.11.3-bin.tar.gz">Download Cassandra</a></p>
+<p>Please download the version 3.11.3.</p>
+<div class="highlight"><pre><span></span><code>wget http://archive.apache.org/dist/cassandra/3.11.3/apache-cassandra-3.11.3-bin.tar.gz
+</code></pre></div>
+
+</li>
+<li>
+<p>Deploy the Cassandra</p>
+<p>Extract and deploy the downloaded tar.gz to your machine.<br />
+Location can be anywhere, but a location with more storage capacity is recommended <strong>/home/mf/cassandra</strong> in this document.</p>
+<div class="highlight"><pre><span></span><code>$ tar xzvf apache-cassandra-3.11.3-bin.tar.gz
+$ mv apache-cassandra-3.11.3 /home/mf/cassandra
+</code></pre></div>
+
+</li>
+</ol>
+<h3 id="22-deployment-of-stratios-cassandra-lucene-index-library">2.2 Deployment of Stratio's Cassandra Lucene Index Library<a class="headerlink" href="#22-deployment-of-stratios-cassandra-lucene-index-library" title="Permanent link"></a></h3>
+<p>To use the Moving Feature Service, you must deploy the Library Stratio's Cassandra Lucene Index in Cassandra, which adds text search capabilities for Lucene.<br />
+Please install the library as the same version with Cassandra.</p>
+<h4 id="221-install-the-library-from-maven-repository">2.2.1 Install the library from Maven Repository<a class="headerlink" href="#221-install-the-library-from-maven-repository" title="Permanent link"></a></h4>
+<p>This library can be downloaded from the Maven Repository.</p>
+<ol>
+<li>
+<p>Download the library from the Maven Repository website</p>
+<div class="highlight"><pre><span></span><code>$ wget https://repo1.maven.org/maven2/com/stratio/cassandra/cassandra-lucene-index-plugin/3.11.3.0/cassandra-lucene-index-plugin-3.11.3.0.jar    
+</code></pre></div>
+
+</li>
+<li>
+<p>Library deployment</p>
+<p>Deployment of the downloaded library in Cassandra.<br />
+The location is <CASSANDRA_HOME>/lib/.<br />
+In this document, it is deployed in "/home/mf/cassandra/lib/".  </p>
+<div class="highlight"><pre><span></span><code>$ cp cassandra-lucene-index-plugin-3.11.3.0.jar /home/mf/cassandra/lib/
+</code></pre></div>
+
+</li>
+</ol>
+<h4 id="222-creating-a-library-from-a-source">2.2.2 Creating a Library from a Source<a class="headerlink" href="#222-creating-a-library-from-a-source" title="Permanent link"></a></h4>
+<p>This library can also be created from sources.
+Create from source using OpenJDK8, Git, and Maven.
+If it is not already installed, please install it.</p>
+<ol>
+<li>
+<p>Obtaining Sources and Creating Libraries</p>
+<p>The source can be obtained from GitHub.<br />
+You can get it from GitHub anywhere.  </p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/Stratio/cassandra-lucene-index.git
+</code></pre></div>
+
+<p>Go to the created directory.</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> cassandra-lucene-index
+</code></pre></div>
+
+<p>Switch branch to branch-3.11.3</p>
+<div class="highlight"><pre><span></span><code>$ git checkout branch-3.11.3
+</code></pre></div>
+
+<p>Create a library.</p>
+<div class="highlight"><pre><span></span><code>$ mvn clean package
+</code></pre></div>
+
+<p>The library is created with the following name.<br />
+The end of the version may vary depending on when you got it from GitHub.</p>
+<div class="highlight"><pre><span></span><code>plugin/target/cassandra-lucene-index-plugin-3.11.3.1-RC1-SNAPSHOT.jar
+</code></pre></div>
+
+</li>
+<li>
+<p>Library deployment</p>
+<p>Deployment of the downloaded library in Cassandra.<br />
+The location is <CASSANDRA_HOME>/lib/.<br />
+In this document, it is deployed in "/home/mf/cassandra/lib/".  </p>
+<div class="highlight"><pre><span></span><code>$ cp plugin/target/cassandra-lucene-index-plugin-3.11.3.1-RC1-SNAPSHOT.jar /home/mf/cassandra/lib/
+</code></pre></div>
+
+</li>
+</ol>
+<h3 id="23-deployment-of-jts-topology-suite-library">2.3 Deployment of JTS Topology Suite library<a class="headerlink" href="#23-deployment-of-jts-topology-suite-library" title="Permanent link"></a></h3>
+<p>Stratio's Cassandra Lucene Index library uses JTS Topology Suite library when handling location information.<br />
+Since MovingFeature Service searches by location information, this library also needs to be placed in Cassandra.<br />
+It must same the version of the library to the version required by Stratio's Cassandra Lucene Index. 
+(As of April 8, 2019: jts-core-1.14.0.jar)<br />
+This library can be downloaded from Maven Repository.  </p>
+<ol>
+<li>
+<p>Download the library from the Maven Repository website</p>
+<div class="highlight"><pre><span></span><code>wget https://repo1.maven.org/maven2/com/vividsolutions/jts-core/1.14.0/jts-core-1.14.0.jar
+</code></pre></div>
+
+</li>
+<li>
+<p>Library deployment</p>
+<p>Deployment of the downloaded library in Cassandra.<br />
+The location is <CASSANDRA_HOME>/lib/.<br />
+In this document, it is deployed in "/home/mf/cassandra/lib/".  </p>
+<div class="highlight"><pre><span></span><code>$ cp jts-core-1.14.0.jar /home/mf/cassandra/lib/
+</code></pre></div>
+
+</li>
+</ol>
+<hr />
+<h2 id="3-build-apache-spark">3. Build Apache Spark<a class="headerlink" href="#3-build-apache-spark" title="Permanent link"></a></h2>
+<p>This document only describes the basic construction of Apache Spark.<br />
+Please visit Apache Spark's website for detailed configuration and tuning.  </p>
+<h3 id="31-build-apache-spark">3.1 Build Apache Spark<a class="headerlink" href="#31-build-apache-spark" title="Permanent link"></a></h3>
+<p>MovingFeature Service works with version <strong>2.4.3</strong> Apache Spark.</p>
+<ol>
+<li>
+<p>Download Apache Spark</p>
+<p>Click this <a href="http://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz">Download Apache Spark</a></p>
+<p>Please download the version 2.4.3</p>
+<div class="highlight"><pre><span></span><code>wget http://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz
+</code></pre></div>
+
+</li>
+<li>
+<p>Deploy the Apache Spark</p>
+<p>Extract and deploy the downloaded tar.gz to your machine.   <br />
+Location can be anywhere, but a location with more storage capacity is recommended "<strong>/home/mf/spark</strong>" in this document.
+<!-- /opt/spark -->
+<div class="highlight"><pre><span></span><code>$ tar xzvf spark-2.4.3-bin-hadoop2.7.tgz
+$ sudo mv spark-2.4.3-bin-hadoop2.7/ /home/mf/spark 
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="32-set-apache-spark-environment">3.2 Set Apache Spark environment<a class="headerlink" href="#32-set-apache-spark-environment" title="Permanent link"></a></h3>
+<ol>
+<li>Set the Apache Spark execution path</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>$ vim ~/.bashrc
+</code></pre></div>
+2. Add the path of sprak in the "<strong>~/.bashrc</strong>"</p>
+<p><div class="highlight"><pre><span></span><code>export SPARK_HOME<span class="p">=</span><span class="sr">/home/</span>mf/spark
+export PATH<span class="p">=</span>$PATH:$SPARK_HOME<span class="sr">/bin:$SPARK_HOME/</span>sbin
+</code></pre></div>
+3. Activate the changes.</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> ~/.bashrc
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 National Institute of Advanced Industrial Science and Technology <a href="https://www.aist.go.jp/index_en.html"  target="_blank" rel="noopener"> AIST</a>
+
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/aistairc/dprt-mf" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/aistairc/dprt-mf" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="extra.js"></script>
+      
+    
+  </body>
 </html>
-
-<!--
-MkDocs version : 1.1.2
-Build Date UTC : 2020-10-19 01:17:28.224695+00:00
--->
