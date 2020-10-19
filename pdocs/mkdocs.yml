@@ -1,1 +1,100 @@
-site_name: My Docs
+site_name: DPRT Moving Features Document
+site_url: https://breeze0512.gitlab.io/dprt-mf-docs
+site_dir: public
+repo_url: https://github.com/aistairc/dprt-mf
+repo_name: aistairc/dprt-mf
+
+copyright: |
+  Copyright &copy; 2020 National Institute of Advanced Industrial Science and Technology <a href="https://www.aist.go.jp/index_en.html"  target="_blank" rel="noopener"> AIST</a>
+
+
+docs_dir: docs
+
+theme:
+  name: material
+  custom_dir: stylesheets
+  icon:
+    logo: material/book-open-page-variant
+  palette:
+    primary: drac-purple
+    accent: drac-purple
+    
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - tabs
+  icon:
+    repo: fontawesome/brands/git-alt
+      
+nav:
+  - Getting Start: index.md
+
+
+markdown_extensions:
+  - markdown.extensions.toc:
+      slugify: !!python/name:pymdownx.slugs.uslugify
+      permalink: ""
+  - markdown.extensions.admonition:
+  - markdown.extensions.smarty:
+      smart_quotes: false
+  - pymdownx.betterem:
+  - markdown.extensions.attr_list:
+  - markdown.extensions.def_list:
+  - markdown.extensions.tables:
+  - markdown.extensions.abbr:
+  - markdown.extensions.footnotes:
+  - markdown.extensions.md_in_html:
+  - pymdownx.arithmatex
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.mark
+  - admonition
+  - pymdownx.details
+  - codehilite
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.betterem
+  - pymdownx.emoji
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      extend_pygments_lang:
+        - name: php-inline
+          lang: php
+          options:
+            startinline: true
+        - name: pycon3
+          lang: pycon
+          options:
+            python3: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite:
+      custom_inline:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.inline_mathjax_format
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      social_url_shortener: true
+      user: aistairc
+      repo: dprt-mf
+  - pymdownx.critic:
+      
+extra:
+  social:
+    - icon: material/github
+      link: https://github.com/aistairc/dprt-mf
+    - icon: material/home
+      link: https://github.com/aistairc/dprt-mf
+
+extra_javascript:
+  - extra.js
+extra_css:
+  - extra.css
+
